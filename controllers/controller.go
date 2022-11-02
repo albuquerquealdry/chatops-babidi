@@ -1,9 +1,14 @@
 package controllers
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/albuquerquealdry/chatops-babidi/service"
+	"github.com/gin-gonic/gin"
+)
 
 func CommitAction(c *gin.Context) {
+	service.TelegramRander()
+
 	c.JSON(200, gin.H{
-		"mensage" : "commit action",
+		"mensage": "Success Request",
 	})
 }
