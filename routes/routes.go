@@ -8,6 +8,6 @@ import (
 func Request() {
 	r := gin.Default()
 	r.POST("/commitAction", controllers.CommitAction)
-	r.Run(":3001")
+	r.Run(":80")
 
 }
