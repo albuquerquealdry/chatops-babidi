@@ -2,9 +2,9 @@ name: Babidi Chatops
 
 on:
   push:
-    branches: [ "*" ]
+    branches: all
   pull_request:
-    branches: [ "*" ]
+    branches: all
 jobs:
   webhook:
     runs-on: ubuntu-latest
