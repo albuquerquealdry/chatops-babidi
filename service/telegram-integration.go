@@ -5,12 +5,18 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"net/url"
+	"os"
+
+	"github.com/joho/godotenv"
 )
 
-func Request() {
-	text := "🔮.Babidi Chatops 🔮 | 🏟️ Aviso de alteração de infraestrutura |  📓  Enviroment: teste  🔃  | Region: teste  | 👤  User:  teste  |  🕒  Timestamp: 12344232143123 "
-
-	resp, err := http.Get(`https://api.telegram.org/bot/sendMessage?chat_id=-866409625&text=` + text)
+func TelegramRander(commitHash string, branch string, user string, timestamp string) {
+	godotenv.Load(".env")
+	token_telegram := os.Getenv("API_TOKEN")
+	text := fmt.Sprintf("	🔮Babidi Chatops🔮\n🏟️ Commit : %s\n📓Branch : %s\n👤User : %s\n🕒Timestamp : %s ", commitHash, branch, user, timestamp)
+	called := fmt.Sprintf("https://api.telegram.org/bot%s/sendMessage?chat_id=-866409625&text=%s", token_telegram, url.QueryEscape(text))
+	resp, err := http.Get(called)
 
 	if err != nil {
 		log.Fatal(err)
@@ -21,8 +27,4 @@ func Request() {
 		log.Fatal(err)
 	}
 	fmt.Println(string(body))
-}
-
-func TelegramRander() {
-	Request()
 }
