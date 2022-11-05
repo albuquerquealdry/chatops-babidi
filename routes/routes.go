@@ -11,6 +11,10 @@ func Request() {
 	r := gin.Default()
 
 	r.POST("/commitAction", controllers.CommitAction)
-	r.Run(":" + os.Getenv("PORT"))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	r.Run(":" + port)
 
 }
