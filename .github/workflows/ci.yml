@@ -43,4 +43,4 @@ jobs:
         url: 'https://telegram-bot-asx.herokuapp.com/commitAction'
         method: 'POST'
         customHeaders: '{"Content-Type": "application/json"}'
-        data: '{ "commitHash" : "${{ github.event.head_commit.message }}", "repository" : "${{ github.event.repository.name }}" ,"branch" : "${{ steps.branch-name.outputs.current_branch }}", "userName" : "${{GITHUB_ACTOR}}", "timestamp" : "${{ steps.time.outputs.time }}"}'
+        data: '{ "commitHash" : "${{ github.event.head_commit.message }}", "repository" : "${{ github.event.repository.name }}" ,"branch" : "${{ steps.branch-name.outputs.current_branch }}", "userName" :  "${{ github.event.schedule.user.login }}", "timestamp" : "${{ steps.time.outputs.time }}"}'
