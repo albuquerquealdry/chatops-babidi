@@ -27,10 +27,14 @@ jobs:
     - name: Test
       run: go test -v ./...
     
+    - name: Get branch names
+      id: branch-name
+      uses: tj-actions/branch-names@v6
+    
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
         url: 'https://telegram-bot-asx.herokuapp.com/commitAction'
         method: 'POST'
         customHeaders: '{"Content-Type": "application/json"}'
-        data: '{ "commitHash" : "${{ github.event.head_commit.message }}", "repository" : "${{ github.event.repository.name }}" ,"branch" : "${{GITHUB_REF#refs/*/}}", "userName" : "${{ github.event.member }}", "timestamp" : "${{ github.event.created_at }}"}'
+        data: '{ "commitHash" : "${{ github.event.head_commit.message }}", "repository" : "${{ github.event.repository.name }}" ,"branch" : "${{ steps.branch-name.outputs.current_branch }}", "userName" : "${{ github.event.member }}", "timestamp" : "${{ github.event.created_at }}"}'
