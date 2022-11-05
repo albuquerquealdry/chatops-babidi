@@ -27,5 +27,10 @@ jobs:
     - name: Test
       run: go test -v ./...
     
-    -name: Webhook
-     run: curl -X POST -H "Content-Type: application/json" \ -d '{ "commitHash" : "testets", "branch" : "develop", "userName" : "Randane", "timestamp" : "612897628791"}' \ https://telegram-bot-asx.herokuapp.com/commitAction
+    - name: Deploy Stage
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://telegram-bot-asx.herokuapp.com/commitAction'
+        method: 'POST'
+        customHeaders: '{"Content-Type": "application/json"}'
+        data: '{ "commitHash" : "testets", "branch" : "develop", "userName" : "Randane", "timestamp" : "612897628791"}'
