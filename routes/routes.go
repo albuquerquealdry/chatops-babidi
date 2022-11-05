@@ -1,10 +1,13 @@
 package routes
 
-import "github.com/gin-gonic/gin"
-import "github.com/albuquerquealdry/chatops-babidi/controllers"
+import (
+	"github.com/albuquerquealdry/chatops-babidi/controllers"
+	"github.com/gin-gonic/gin"
+)
 
 func Request() {
 	r := gin.Default()
-	r.GET("/commitAction", controllers.CommitAction)
+	r.POST("/commitAction", controllers.CommitAction)
 	r.Run(":3001")
+
 }
