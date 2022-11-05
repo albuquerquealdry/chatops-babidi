@@ -11,5 +11,6 @@ func Request() {
 	r := gin.Default()
 
 	r.POST("/commitAction", controllers.CommitAction)
-	r.Run(os.Getenv("PORT"))
+	r.Run(":" + os.Getenv("PORT"))
+
 }
