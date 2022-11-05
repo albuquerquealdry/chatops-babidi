@@ -5,10 +5,17 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func CommitAction(c *gin.Context) {
-	service.TelegramRander()
+type ReqStructure struct {
+	CommitHash string `json:"commitHash"`
+	Branch     string `json:"branch"`
+	UserName   string `json:"userName"`
+	Timestamp  string `json:"timestamp"`
+}
 
-	c.JSON(200, gin.H{
-		"mensage": "Success Request",
-	})
+func CommitAction(c *gin.Context) {
+
+	var requestBody ReqStructure
+	if err := c.BindJSON(&requestBody); err != nil {
+	}
+	service.TelegramRander(requestBody.CommitHash, requestBody.Branch, requestBody.UserName, requestBody.Timestamp)
 }
