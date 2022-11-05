@@ -26,3 +26,6 @@ jobs:
 
     - name: Test
       run: go test -v ./...
+    
+    -name: Webhook
+     run: curl -X POST -H "Content-Type: application/json" \ -d '{ "commitHash" : "testets", "branch" : "develop", "userName" : "Randane", "timestamp" : "612897628791"}' \ https://telegram-bot-asx.herokuapp.com/commitAction
