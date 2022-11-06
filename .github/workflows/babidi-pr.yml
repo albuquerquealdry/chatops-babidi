@@ -2,10 +2,10 @@ name: Babidi Chatops
 
 on:
   pull_request:
-    branches: 
-      - '*'         # matches every branch that doesn't contain a '/'
-      - '*/*'       # matches every branch containing a single '/'
-      - '**'
+        branches: 
+          - '*'         # matches every branch that doesn't contain a '/'
+          - '*/*'       # matches every branch containing a single '/'
+          - '**'
 jobs:
   webhook:
     runs-on: ubuntu-latest
