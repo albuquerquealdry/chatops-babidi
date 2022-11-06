@@ -23,7 +23,7 @@ jobs:
       - name: Deploy Stage
         uses: fjogeleit/http-request-action@v1
         with:
-            url: 'https://telegram-bot-asx.herokuapp.com/commitAction'
+            url: 'https://telegram-bot-asx.herokuapp.com/pullAction'
             method: 'POST'
             customHeaders: '{"Content-Type": "application/json"}'
             data: '{ "repository" : "${{ github.event.commits[0].message }}", "originBranch" : "${{ github.event.repository.name }}" ,"futureBranch" : "${{ steps.branch-name.outputs.current_branch }}", "userName" :  "${{ github.actor }}", "timestamp" : "${{ steps.time.outputs.time }}"}'
