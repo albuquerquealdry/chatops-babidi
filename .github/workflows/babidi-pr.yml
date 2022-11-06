@@ -1,7 +1,6 @@
 name: Babidi Chatops
 
 on:
-  push:
   pull_request:
     branches: 
       - '*'         # matches every branch that doesn't contain a '/'
