@@ -1,4 +1,4 @@
-name: Babidi Chatops
+name: Babidi PR
 
 on:
   pull_request:
