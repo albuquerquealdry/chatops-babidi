@@ -12,6 +12,7 @@ func Request() {
 	r := gin.Default()
 
 	r.POST("/commitAction", controllers.CommitAction)
+	r.POST("/pullAction", controllers.PullAction)
 	var port = os.Getenv("PORT")
 	// Set a default port if there is nothing in the environment
 	if port == "" {
